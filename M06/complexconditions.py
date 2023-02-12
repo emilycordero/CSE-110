@@ -9,6 +9,9 @@ Purpose: To practice if statements.
 x = int(input('What is x? '))
 y = int(input('What is y? '))
 word = input('Enter a word: ')
+first_name = input('What is your first name? ')
+last_name = input('What is your last name? ')
+is_hot = True
 
 # Conditions: and / or
 if x > 5 and x < 10:
@@ -32,3 +35,15 @@ if x > 5 and y > 10 and word.lower() == 'taco':
 if x == 5 or x == 6:
     print('This is true.')
 
+# To compare multiple conditions
+if first_name == 'Scott' or last_name == 'Joe':
+    print('Scott Joe')
+else:
+    print('Your name is not Scott Joe.')
+
+if is_hot:
+    print("It's hot.")
+elif not is_hot:
+    print("It is not hot.")
+else:
+    print("Not is hot")
