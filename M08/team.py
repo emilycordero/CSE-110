@@ -13,4 +13,4 @@ for letter in word:
     if letter != fav_letter.lower():
         print(f'{letter.lower()}', end='')
     else:
-        print(f'{letter.capitalize()}', end='')
+        print('_', end='')

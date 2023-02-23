@@ -44,7 +44,7 @@ first_name = "Emily"
 for i, letter in enumerate(first_name):
     print(f'The {letter} is at position {i}')
 
-# Accessing letters by position: 3 index will get 4th letter not 3rd 
+# Accessing letters by position: 3 index will get 4th letter not 3rd
 fourth_letter = first_name[3] # Notice, using 3 instead of 4
 print(fourth_letter)
 
