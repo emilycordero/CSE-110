@@ -7,6 +7,7 @@ Purpose: Create a word game.
 """
 # Run again loop
 run_again = 'yes'
+
 # Have a secret word stored in the program
 secret_word = 'mosiah'
 
@@ -40,9 +41,9 @@ while run_again.lower() == 'yes':
         hint = ''
 
         for i, letter in enumerate(secret_word):
-            if i < len(guess) and letter.lower() == (guess)[i]:
+            if (secret_word)[i] == (guess)[i]:
                 hint += letter.upper()
-            elif letter.lower() in guess:
+            elif (guess)[i] != (secret_word):
                 hint += letter.lower()
             else:
                 hint += '_ '
