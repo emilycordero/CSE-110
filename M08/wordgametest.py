@@ -32,6 +32,7 @@ while run_again.lower() == 'yes':
     print()
 
     # continue looping as long as that guess is NOT correct
+
     while guess != secret_word:
         # Calculate the number of guess and display it in the end
         attempts_made += 1

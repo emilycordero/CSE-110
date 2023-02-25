@@ -4,54 +4,54 @@ author: Emily Cordero
 
 Purpose: Create a word game.
 
- """
- # Welcome user to the word guessing game
+"""
+# Run again loop
+run_again = 'yes'
+# Have a secret word stored in the program
+secret_word = 'mosiah'
 
-print('Welcome to the word guessing game! \n')
+# Declare attempts made
+attempts_made = 0
 
-play_again = input('Are you ready to begin (yes/no)? \n')
+# Error statement
+wrong_guess = 'Your guess was not correct.'
 
-# Declare variables
-secret = 'mosiah'
-hint = ''
+# Guess
 guess = ''
-user_times_to_guess = 0
 
-# While loop for game
-while play_again.lower() == 'yes':
+# Start loop
+run_again = input('Do you want to play Wordle (yes/no)?')
+# Loop for initial hint
+while run_again.lower() == 'yes':
     print('Your hint is: ', end='')
-    # Add hint
-    for letter in secret:
-        print('_', end='')
+    for letter in secret_word:
+        print('_ ', end='')
 
+    # Space     
     print()
     print()
 
-    # Ask for the guess
-    guess = input('What is your guess? ')
+    # continue looping as long as that guess is NOT correct
 
-    # while loop in case it is not correct word
-    while guess != secret:
-        guess = input('What is your guess? ')
-        print(f'{hint}', end ='')
-        for i, letter in enumerate(secret):
-            # This is checking if we have a correct letter in the right place of the word
+    while guess != secret_word:
+        # Calculate the number of guess and display it in the end
+        attempts_made += 1
+        guess = str(input('What is your guess? '))
+        hint = ''
+
+        for i, letter in enumerate(secret_word):
             if i < len(guess) and letter.lower() == (guess)[i]:
                 hint += letter.upper()
-            
-            # Checks if the letter exists in the word but not the same place
             elif letter.lower() in guess:
                 hint += letter.lower()
-            
-            # This letter is incorrect in the secret word
             else:
-                hint += '_'
-        print(f'{hint}', end ='')    
-    
-    # Space
-    print()
-    print()
+                hint += '_ '
+        print(f'Your hint is: {hint}')
 
-    play_again = input('Do you want to play again (yes/no)? \n')
-# Thank user
-print('Thank you for playing. ')
+        while len(guess) != len(secret_word):
+            print('Sorry, the guess must have the same number of letters as the secret word.')
+            guess = str(input('What is your guess? '))
+
+    print('Congratulations! You guessed it!')
+    print(f'It took you {attempts_made} guesses.')
+    run_again = input('Do you want to play again (yes/no)?')
