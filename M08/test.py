@@ -1,4 +1,3 @@
-# Lacie's code
 print()
 
 # Secret word
