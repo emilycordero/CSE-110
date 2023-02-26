@@ -5,11 +5,14 @@ author: Emily Cordero
 Purpose: Create a word game.
 
 """
+# Import random library to be able to use random.choice() function
+import random
+
 # Run again loop
 run_again = 'yes'
 
-# Have a secret word stored in the program
-secret_word = 'house'
+# Have a secret list stored in the program
+secret_list = ['python', 'c++', 'c#', 'html', 'css', 'java', 'javascript', 'mosiah', 'moroni', 'temple']
 
 # Declare attempts made
 attempts_made = 0
@@ -25,6 +28,9 @@ run_again = input('Do you want to play Wordle (yes/no)?')
 
 # Run again loop
 while run_again.lower() == 'yes':
+    # To randomly select a word
+    secret_word = random.choice(secret_list)
+
     # Loop for initial hint
     print('Your hint is: ', end='')
     for letter in secret_word:
@@ -36,7 +42,7 @@ while run_again.lower() == 'yes':
 
     # continue looping as long as that guess is NOT correct
 
-    while guess != secret_word:
+    while guess.lower() != secret_word:
         # Calculate the number of guess and display it in the end
         attempts_made += 1
         guess = str(input('What is your guess? '))
@@ -56,7 +62,11 @@ while run_again.lower() == 'yes':
                 hint += '_ '
         print(f'Your hint is: {hint}')
 
-
+    print()
     print('Congratulations! You guessed it!')
     print(f'It took you {attempts_made} guesses.')
+    
+    print()
     run_again = input('Do you want to play again (yes/no)?')
+print()
+print('Thank you for playing my game!')
