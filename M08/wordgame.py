@@ -7,8 +7,9 @@ Purpose: Create a word game.
 """
 # Run again loop
 run_again = 'yes'
+
 # Have a secret word stored in the program
-secret_word = 'mosiah'
+secret_word = 'house'
 
 # Declare attempts made
 attempts_made = 0
@@ -21,8 +22,10 @@ guess = ''
 
 # Start loop
 run_again = input('Do you want to play Wordle (yes/no)?')
-# Loop for initial hint
+
+# Run again loop
 while run_again.lower() == 'yes':
+    # Loop for initial hint
     print('Your hint is: ', end='')
     for letter in secret_word:
         print('_ ', end='')
@@ -39,18 +42,20 @@ while run_again.lower() == 'yes':
         guess = str(input('What is your guess? '))
         hint = ''
 
-        for i, letter in enumerate(secret_word):
-            if i < len(guess) and letter.lower() == (guess)[i]:
+        while len(guess) != len(secret_word):
+            attempts_made += 1
+            print('Sorry, the guess must have the same number of letters as the secret word.')
+            guess = str(input('What is your guess? '))
+
+        for i, letter in enumerate(guess):
+            if i < len(guess) and letter.lower() == (secret_word)[i]:
                 hint += letter.upper()
-            elif letter.lower() in guess:
+            elif letter.lower() in secret_word:
                 hint += letter.lower()
             else:
                 hint += '_ '
         print(f'Your hint is: {hint}')
 
-        while len(guess) != len(secret_word):
-            print('Sorry, the guess must have the same number of letters as the secret word.')
-            guess = str(input('What is your guess? '))
 
     print('Congratulations! You guessed it!')
     print(f'It took you {attempts_made} guesses.')
