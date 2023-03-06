@@ -8,8 +8,9 @@ Purpose: Create a program that stores a list of products in a shopping cart alon
 quantity_of_items = []
 prices_of_items = []
 shopping_items = []
+shopping_cart = []
 add_item = ''
-option = 0
+option = None
 sales_tax_rate = 8.2
 
 
@@ -46,22 +47,32 @@ while option != 5:
             price = prices_of_items[i]
             number = quantity_of_items[i]
             i += 1
-            print(f'{i}. {number} of {item} - ${price:.2f}')
+            print(f'{i}. {number} of {item} - ${price:.2f} each.')
         print()
         print('Please select one of the following: ')
         print('1. Add item\n 2. View cart\n 3. Remove item\n 4. Compute total\n 5. Quit')
         option = int(input('Please enter an action: '))
     # Remove an item (only needed for the final project deliverable)
     while option == 3:
-        replace = int(input('What item would you like to remove? '))
-
-        if replace <= len(shopping_items) and replace <= number:
-            shopping_items.pop((replace -1))
-            prices_of_items.pop((replace -1))
-            quantity_of_items.pop((replace-1))
-            print('Item removed.')
-        else:
+        for i in range(len(shopping_items)):
+            item = shopping_items[i]
+            price = prices_of_items[i]
+            number = quantity_of_items[i]
+        remove = int(input('What item would you like to remove? '))
+        while remove > len(shopping_items):
             print('Sorry, that is not a valid item number. ')
+            remove = int(input('What item would you like to remove? '))
+        
+        amount_removed = int(input('How many would you like to remove? '))
+        if remove <= len(shopping_items) and amount_removed == number:
+            shopping_items.pop((remove -1))
+            prices_of_items.pop((remove -1))
+            quantity_of_items.pop((remove-1))
+            print('Item removed.')
+        elif remove <= len(shopping_items) and amount_removed < number:
+            print(f'{amount_removed} of {item} was removed.')
+            number -= amount_removed
+            quantity_of_items.insert(0,number)
         print()
         print('Please select one of the following: ')
         print('1. Add item\n 2. View cart\n 3. Remove item\n 4. Compute total\n 5. Quit')
@@ -70,7 +81,10 @@ while option != 5:
     # Added sales tax of wa state in my town 8.2%
     while option == 4:
         subtotal = 0
-        for price in prices_of_items: 
+        for i in range(len(shopping_items)):
+            item = shopping_items[i]
+            price = prices_of_items[i]
+            number = quantity_of_items[i]
             subtotal += price * number
         sales_tax = subtotal * (sales_tax_rate/100)
         total_price = subtotal + sales_tax
