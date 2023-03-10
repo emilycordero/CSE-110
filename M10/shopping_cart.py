@@ -15,12 +15,14 @@ sales_tax_rate = 8.2
 
 
 # Welcome user to the program
+print()
+
 print('Welcome to the Shopping Cart Program!')
 
 print()
 
 print('Please select one of the following: ')
-print('1. Add item\n 2. View cart\n 3. Remove item\n 4. Compute total\n 5. Quit')
+print('1. Add item\n2. View cart\n3. Remove item\n4. Compute total\n5. Quit')
 option = int(input('Please enter an action: '))
 
 while option != 5:
@@ -29,15 +31,15 @@ while option != 5:
     while option == 1:
         add_item = str(input('What item would you like to add? '))
         shopping_items.append(add_item)
-        price_of_item = float(input(f'What is the price of "{add_item}"? '))
+        price_of_item = float(input(f"What is the price of '{add_item}'? "))
         prices_of_items.append(price_of_item)
         quantity_of_item = int(input('How many would you like of the item? '))
         quantity_of_items.append(quantity_of_item)
-        print(f"'{add_item}' had been added to the cart. ")
+        print(f"{quantity_of_item} of '{add_item}' has been added to the cart. ")
         print()
         print('Please select one of the following: ')
-        print('1. Add item\n 2. View cart\n 3. Remove item\n 4. Compute total\n 5. Quit')
-        option = int(input('Please enter an action: '))
+        print('1. Add item\n2. View cart\n3. Remove item\n4. Compute total\n5. Quit')
+        option = int(input('Please enter an action: ')) 
 
     # Display the contents of the shopping cart
     while option == 2:
@@ -50,9 +52,9 @@ while option != 5:
             print(f'{i}. {number} of {item} - ${price:.2f} each.')
         print()
         print('Please select one of the following: ')
-        print('1. Add item\n 2. View cart\n 3. Remove item\n 4. Compute total\n 5. Quit')
+        print('1. Add item\n2. View cart\n3. Remove item\n4. Compute total\n5. Quit')
         option = int(input('Please enter an action: '))
-    # Remove an item (only needed for the final project deliverable)
+    # Remove an item 
     while option == 3:
         for i in range(len(shopping_items)):
             item = shopping_items[i]
@@ -73,11 +75,13 @@ while option != 5:
             print(f'{amount_removed} of {item} was removed.')
             number -= amount_removed
             quantity_of_items.insert(0,number)
+        else:
+            print('Sorry, that is not a valid amount. ')
         print()
         print('Please select one of the following: ')
-        print('1. Add item\n 2. View cart\n 3. Remove item\n 4. Compute total\n 5. Quit')
+        print('1. Add item\n2. View cart\n3. Remove item\n4. Compute total\n5. Quit')
         option = int(input('Please enter an action: '))
-    # Compute the total (only needed for the final project deliverable)
+    # Compute the total 
     # Added sales tax of wa state in my town 8.2%
     while option == 4:
         subtotal = 0
@@ -93,7 +97,7 @@ while option != 5:
         print(f'The total price of the items in the shopping cart is ${total_price:.2f}')
         print()
         print('Please select one of the following: ')
-        print('1. Add item\n 2. View cart\n 3. Remove item\n 4. Compute total\n 5. Quit')
+        print('1. Add item\n2. View cart\n3. Remove item\n4. Compute total\n5. Quit')
         option = int(input('Please enter an action: '))
 # Quit
 print('Thank you. Goodbye. ')
