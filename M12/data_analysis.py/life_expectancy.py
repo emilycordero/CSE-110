@@ -4,15 +4,22 @@ year_list = []
 life_expectancy_list = []
 total_life_exp = ''
 average_life_exp = 0
-max_country = ''
-lowest_life_exp = 999999.00
 life_exp = 1.0
+user_max_country = ''
+user_max_life = -1.0
+user_max_year = int
+user_max_code = int
+user_min_year = int
+user_min_country = ''
+user_min_life= 99999999
+max_country = ''
 max_life = -1.0
 max_year = int
+max_code = int
 min_year = int
 min_country = ''
-min_life=99999999
-max_code = int
+min_life= 99999999
+
 
 
 user_year = int(input('Enter year of interest: '))
@@ -47,9 +54,31 @@ with open('life-expectancy.csv','r') as life_expectancy_file:
             min_year = year
             min_code = code
 
+        while year == user_year:
+            if life_exp > max_life:
+                counter += 1
+                user_max_life = life_exp
+                user_max_year = year
+                user_max_country = country
+                user_max_code = code 
+                total_life_exp += life_exp
+                average_life_exp = total_life_exp / counter
+
+            if life_exp <= min_life:
+                user_min_life = life_exp
+                user_min_country = country
+                user_min_year = year
+                user_min_code = code
+
     print(f'The overall max life expectancy is: {max_life:.5} from {max_country} in {max_year}')
     print(f'The overall max life expectancy is: {min_life:.5} from {min_country} in {min_year}')
 
+    print()
+
+    print(f'For the year of {user_year}: ')
+    print(f'The average life expectancy across all countries was {average_life_exp}')
+    print(f'The max life expectancy was in {user_max_country} with {user_min_life}')
+    print(f'The min life expectancy was in {user_min_country} with {user_min_life}')
     
 
 
